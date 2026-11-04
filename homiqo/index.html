@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOMIQO | On-Demand Home Services</title>
+
+    <!-- Custom Favicon / Tab Logo -->
+    <link rel="icon" type="image/png" href="/logo.png" />
+    
+    <!-- ... rest of your head tags ... -->
+</head>
+
+<body>
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#" class="brand-logo" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+  <img src="/logo.png" alt="Homiqo Logo" style="height: 36px; width: auto; object-fit: contain;" />
+  <span style="font-size: 1.5rem; font-weight: 800; color: #2563eb;">HOMIQO</span>
+</a>
+        <div class="auth-actions" id="authActions">
+            <button class="btn btn-outline" id="openLoginBtn">Login / Register</button>
+            <button class="btn btn-primary" id="headerBookBtn">Book a Service</button>
+        </div>
+        <div class="user-menu" id="userMenu" style="display: none;">
+            <span id="userBadge" class="user-badge">User</span>
+            <span id="userDisplayName">User</span>
+            <button class="btn btn-logout" id="logoutBtn">Logout</button>
+        </div>
+    </header>
+<!-- Main Public / Customer Portal -->
+    <main id="publicPortal">
+
+        <!-- User In-App Navigation Bar -->
+        <div class="user-subnav">
+            <button class="user-nav-btn active" data-target="user-home">🏠 Home & Services</button>
+            <button class="user-nav-btn" data-target="user-history">📜 Service History</button>
+            <button class="user-nav-btn" data-target="user-profile">👤 My Profile</button>
+            <button class="user-nav-btn" data-target="user-help">🛟 Help Desk</button>
+        </div>
+
+        <!-- ================= SECTION 1: HOME & AVAILABLE SERVICES ================= -->
+        <section id="user-home" class="user-tab-pane active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Your Home Deserves Better Care.</h1>
+                    <p>Verified electricians, plumbers, and home experts dispatched safely.</p>
+                    <div class="search-box">
+                        <input type="text" id="serviceSearch" placeholder="Search for electric repairs, plumbing, cleaning...">
+                        <button class="btn btn-primary" id="searchBtn">Search</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services">
+                <div class="section-header">
+                    <h2>Our Services</h2>
+                    <p>Standardized diagnostic inspection charges starting from ₹99</p>
+                </div>
+
+                <div class="category-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="electrical">Electrical</button>
+                    <button class="filter-btn" data-category="plumbing">Plumbing</button>
+                    <button class="filter-btn" data-category="cleaning">Cleaning</button>
+                    <button class="filter-btn" data-category="appliances">Appliances</button>
+                </div>
+
+                <div class="services-grid" id="servicesGrid">
+                    <div class="service-card" data-category="electrical">
+                        <div class="service-icon">⚡</div>
+                        <h3>Electrical Repairs & Wiring</h3>
+                        <p>Switchboard repairs, fuse fixes, and circuit diagnostics.</p>
+                        <div class="card-footer">
+                            <button class="btn btn-outline book-trigger" data-service="Electrical Repairs" data-fee="99">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-category="plumbing">
+                        <div class="service-icon">🔧</div>
+                        <h3>Plumbing & Pipe Fitting</h3>
+                        <p>Tap leakage, drain cleaning, pipeline replacement, and sanitary fixes.</p>
+                        <div class="card-footer">
+                            <button class="btn btn-outline book-trigger" data-service="Plumbing & Pipe Fitting" data-fee="99">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-category="cleaning">
+                        <div class="service-icon">🧹</div>
+                        <h3>Deep Home Cleaning</h3>
+                        <p>Full room sanitization, kitchen degreasing, and floor scrubbing.</p>
+                        <div class="card-footer">
+                            <button class="btn btn-outline book-trigger" data-service="Deep Home Cleaning" data-fee="199">Book Now</button>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-category="appliances">
+                        <div class="service-icon">❄️</div>
+                        <h3>AC Service & Repair</h3>
+                        <p>Filter cleaning, power jet wash, gas checks, and diagnostic inspection.</p>
+                        <div class="card-footer">
+                            <button class="btn btn-outline book-trigger" data-service="AC Service & Repair" data-fee="149">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Helplines Section -->
+            <section id="support-banner" class="support-banner">
+                <div class="support-card">
+                    <div class="support-icon">📞</div>
+                    <div class="support-text">
+                        <h3>Need Urgent Assistance?</h3>
+                        <p>Our direct support desk is active. Connect with customer dispatch instantly.</p>
+                    </div>
+                    <div class="support-actions">
+                        <a href="tel:+917997941247" class="btn btn-call">Direct Helpline</a>
+                        <a href="https://wa.me/917997941247" target="_blank" class="btn btn-whatsapp">WhatsApp Desk</a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- ================= SECTION 2: SERVICE HISTORY ================= -->
+        <section id="user-history" class="user-tab-pane" style="display: none;">
+            <div class="section-card-box">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 18px;">
+                    <div>
+                        <h2>Your Service History</h2>
+                        <p style="color: var(--text-muted); font-size: 14px;">Review all booked services, assigned technicians, and status.</p>
+                    </div>
+                    <button class="btn btn-outline btn-sm" id="refreshHistoryBtn">🔄 Refresh History</button>
+                </div>
+                <div class="table-container">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Service Requested</th>
+                                <th>Inspection Token</th>
+                                <th>Address</th>
+                                <th>Assigned Technician</th>
+                                <th>Live Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userHistoryTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 3: USER PROFILE & REPUTATION ================= -->
+        <section id="user-profile" class="user-tab-pane" style="display: none;">
+            <div class="section-card-box">
+                <h2>Account Profile & Interaction Rating</h2>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Manage personal details and check ratings provided by technicians.</p>
+
+                <div class="profile-layout-grid">
+                    <!-- Profile Card -->
+                    <div class="profile-card">
+                        <div class="avatar-upload-box">
+                            <img src="https://via.placeholder.com/110" id="profileImgPreview" alt="Profile Photo">
+                            <label for="profilePhotoInput" class="avatar-edit-label">📷 Change Photo</label>
+                            <input type="file" id="profilePhotoInput" accept="image/*" style="display:none;">
+                        </div>
+
+                        <h3 id="profNameDisplay" style="margin-top: 10px;">User Name</h3>
+                        <p id="profRoleDisplay" style="font-size: 12px; color: var(--text-muted);">Verified Customer</p>
+
+                        <div class="profile-detail-list">
+                            <div class="detail-row">
+                                <span>📱 Mobile:</span>
+                                <strong id="profPhoneDisplay">Not Set</strong>
+                            </div>
+                            <div class="detail-row">
+                                <span>✉️ Email:</span>
+                                <strong id="profEmailDisplay">user@homiqo.com</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Behavior & Reputation Rating Card -->
+                    <div class="reputation-card">
+                        <div class="rep-header">
+                            <div>
+                                <h3>Partner Interaction Rating</h3>
+                                <small style="color: var(--text-muted);">Based on ratings submitted by home service providers</small>
+                            </div>
+                            <div class="big-rating-score">
+                                <span class="score-value">4.9</span>
+                                <span class="score-stars">⭐⭐⭐⭐⭐</span>
+                            </div>
+                        </div>
+
+                        <div class="rating-breakdown">
+                            <div class="rating-metric">
+                                <div class="metric-info">
+                                    <span>Communication & Clarity</span>
+                                    <strong>5.0 / 5.0</strong>
+                                </div>
+                                <div class="metric-bar"><div class="metric-fill" style="width: 100%;"></div></div>
+                            </div>
+
+                            <div class="rating-metric">
+                                <div class="metric-info">
+                                    <span>On-Site Readiness & Coordination</span>
+                                    <strong>4.8 / 5.0</strong>
+                                </div>
+                                <div class="metric-bar"><div class="metric-fill" style="width: 96%;"></div></div>
+                            </div>
+
+                            <div class="rating-metric">
+                                <div class="metric-info">
+                                    <span>Inspection Fee Settlement</span>
+                                    <strong>5.0 / 5.0</strong>
+                                </div>
+                                <div class="metric-bar"><div class="metric-fill" style="width: 100%;"></div></div>
+                            </div>
+                        </div>
+
+                        <div class="badge-trust-notice">
+                            🛡️ <strong>Preferred Customer Badge Active:</strong> Your prompt communication ensures priority queue assignment during peak booking hours.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 4: HELP DESK ================= -->
+        <section id="user-help" class="user-tab-pane" style="display: none;">
+            <div class="section-card-box">
+                <h2>Customer Help Desk & FAQ</h2>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">Get immediate assistance with bookings, payments, and technician arrivals.</p>
+
+                <div class="help-grid">
+                    <div class="help-card">
+                        <div class="help-icon">📞</div>
+                        <h4>Immediate Dispatch Support</h4>
+                        <p>Technician running late or need to reschedule immediately? Speak to our team.</p>
+                        <a href="tel:+917997941247" class="btn btn-primary btn-sm">Call Helpline</a>
+                    </div>
+
+                    <div class="help-card">
+                        <div class="help-icon">💬</div>
+                        <h4>WhatsApp Live Chat</h4>
+                        <p>Share photos of your electrical/plumbing issue for an instant estimate.</p>
+                        <a href="https://wa.me/917997941247" target="_blank" class="btn btn-whatsapp btn-sm">Chat on WhatsApp</a>
+                    </div>
+
+                    <div class="help-card">
+                        <div class="help-icon">💳</div>
+                        <h4>Inspection Token Inquiries</h4>
+                        <p>Understand how diagnostic fees are adjusted against final repair quotes.</p>
+                        <button class="btn btn-outline btn-sm" onclick="alert('Inspection fees (starting ₹99) cover technician travel and diagnostic testing. It is fully adjusted into major work charges.')">View Policy</button>
+                    </div>
+
+                    <div class="help-card">
+                        <div class="help-icon">🛡️</div>
+                        <h4>Service Guarantee (30 Days)</h4>
+                        <p>All repairs conducted via HOMIQO partners carry a 30-day revisit warranty.</p>
+                        <button class="btn btn-outline btn-sm" onclick="alert('HOMIQO 30-Day Guarantee: If an issue reoccurs within 30 days of completion, inspection is free.')">Warranty Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Service Provider Work Desk -->
+    <!-- Service Provider Work Desk (Real-Time Broadcast & Claim) -->
+<!-- ========================================== -->
+    <!-- SERVICE PROVIDER WORKSPACE (MULTI-TAB) -->
+    <!-- ========================================== -->
+    <section id="providerPortal" class="dashboard-section" style="display: none;">
+        
+        <!-- Provider Top Header & Sub-Nav Tabs -->
+        <div class="provider-header-bar">
+            <div>
+                <h2>Technician Operations Hub</h2>
+                <p>Welcome back, <strong id="providerGreeting">Partner</strong>. Real-time broadcast radar active.</p>
+            </div>
+            <div class="live-pulse-badge">
+                <span class="pulse-dot"></span> Live Dispatch Connected
+            </div>
+        </div>
+
+        <!-- Provider In-App Tab Switcher -->
+        <div class="provider-subnav">
+            <button class="prov-tab-btn active" data-tab="prov-home">📊 Dashboard & Live Queue</button>
+            <button class="prov-tab-btn" data-tab="prov-services">🛠 Services & Job History</button>
+            <button class="prov-tab-btn" data-tab="prov-help">🛟 Partner Help Desk</button>
+        </div>
+
+        <!-- ================= TAB 1: HOME DASHBOARD & LIVE QUEUE ================= -->
+        <div id="prov-home" class="prov-tab-content active">
+            <!-- 5 KPI Stat Metrics -->
+            <div class="dashboard-cards provider-kpi-grid">
+                <div class="dash-stat">
+                    <h4>Current Queue (Available)</h4>
+                    <p class="stat-number" id="dashQueueCount">0</p>
+                    <small>Open broadcast requests</small>
+                </div>
+                <div class="dash-stat">
+                    <h4>Accepted Jobs</h4>
+                    <p class="stat-number text-success" id="dashAcceptedCount">0</p>
+                    <small>Jobs assigned to you</small>
+                </div>
+                <div class="dash-stat">
+                    <h4>Total Offered Jobs</h4>
+                    <p class="stat-number text-primary" id="dashOfferedCount">0</p>
+                    <small>Broadcasted in your radar</small>
+                </div>
+                <div class="dash-stat">
+                    <h4>Rejected / Passed</h4>
+                    <p class="stat-number text-danger" id="dashRejectedCount">0</p>
+                    <small>Declined opportunities</small>
+                </div>
+                <div class="dash-stat earnings-card">
+                    <h4>Your Total Earnings</h4>
+                    <p class="stat-number text-gold" id="dashEarningsTotal">₹0</p>
+                    <small>Collected & pending inspection fees</small>
+                </div>
+            </div>
+
+            <!-- Broadcast Table -->
+            <div class="table-container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                    <h3>Live Broadcasted Orders</h3>
+                    <small style="color: var(--text-muted);">Real-time cross-tab synchronization active</small>
+                </div>
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer & Phone</th>
+                            <th>Service & Fee</th>
+                            <th>📍 Service Location</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="providerJobsBody">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ================= TAB 2: SERVICES BREAKDOWN ================= -->
+        <div id="prov-services" class="prov-tab-content" style="display: none;">
+            <div class="section-card-box">
+                <h3>Trade & Service Performance Metrics</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+                    Detailed breakdown of accepted vs. rejected jobs across each trade category.
+                </p>
+
+                <!-- Category Metric Cards -->
+                <div class="services-breakdown-grid" id="serviceMetricsContainer">
+                    <!-- Populated dynamically via script.js -->
+                </div>
+
+                <!-- Accepted Jobs Detail Table -->
+                <div class="table-container" style="margin-top: 24px;">
+                    <h3>My Accepted Service Deliveries</h3>
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Category</th>
+                                <th>Customer</th>
+                                <th>Inspection Token</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="acceptedServicesBody">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 3: TECHNICIAN HELP DESK ================= -->
+        <div id="prov-help" class="prov-tab-content" style="display: none;">
+            <div class="section-card-box">
+                <h3>Technician Partner Assistance & Escalation</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">
+                    Facing issues with customer location, phone unreachable, or safety? Direct support channels are available below.
+                </p>
+
+                <div class="help-grid">
+                    <div class="help-card">
+                        <div class="help-icon">📍</div>
+                        <h4>Customer Address Unclear</h4>
+                        <p>Address pin vague or gate locked? Request real-time landmark guidance from our central dispatch team.</p>
+                        <a href="https://wa.me/917997941247?text=Hi%20Dispatch,%20I%20need%20address%20help%20for%20my%20assigned%20job" target="_blank" class="btn btn-outline btn-sm">Location Support</a>
+                    </div>
+
+                    <div class="help-card">
+                        <div class="help-icon">📵</div>
+                        <h4>Customer Unreachable</h4>
+                        <p>If customer is not picking up for 10 minutes, report here to avoid penalty and re-assign your shift.</p>
+                        <button class="btn btn-outline btn-sm" onclick="alert('Ticket logged: Dispatcher will call the customer right now.')">Report No Answer</button>
+                    </div>
+
+                    <div class="help-card">
+                        <div class="help-icon">💳</div>
+                        <h4>Fee / Payment Disputes</h4>
+                        <p>Customer refuting standard ₹99 inspection charge? Get instant supervisor intervention on the phone.</p>
+                        <a href="tel:+917997941247" class="btn btn-outline btn-sm">Call Accounts Desk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Admin Master Dashboard -->
+    <section id="adminPortal" class="dashboard-section" style="display: none;">
+        <div class="dashboard-header">
+            <h2>Homiqo Central Dispatch Console</h2>
+            <p>Monitor incoming verified leads, assign technicians, and track inspection payments.</p>
+        </div>
+        <div class="dashboard-cards">
+            <div class="dash-stat">
+                <h4>Verified Bookings</h4>
+                <p class="stat-number" id="adminTotalBookings">0</p>
+            </div>
+            <div class="dash-stat">
+                <h4>Pending Dispatch</h4>
+                <p class="stat-number" id="adminPendingBookings">0</p>
+            </div>
+            <div class="dash-stat">
+                <h4>Registered Technicians</h4>
+                <p class="stat-number" id="adminTechCount">3</p>
+            </div>
+        </div>
+        <div class="table-container">
+            <h3>Live Bookings Queue</h3>
+            <table class="dash-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer & Phone</th>
+                        <th>Service Requested</th>
+                        <th>Inspection Fee</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Dispatch To</th>
+                    </tr>
+                </thead>
+                <tbody id="adminBookingsTableBody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Enhanced Booking Modal with OTP & Inspection Token -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h3>Schedule a Professional</h3>
+            <p id="modalSubtitle" style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+                Verified technician dispatch with standard inspection charges.
+            </p>
+
+            <form id="bookingForm">
+                <!-- Step 1: Customer Details -->
+                <div id="bookingStep1">
+    <div class="form-group">
+        <label for="serviceName">Service</label>
+        <input type="text" id="serviceName" readonly>
+    </div>
+
+    <div class="form-group">
+        <label for="serviceFee">Inspection / Diagnostic Fee</label>
+        <input type="text" id="serviceFee" readonly>
+    </div>
+
+    <div class="form-group">
+        <label for="userName">Full Name</label>
+        <input type="text" id="userName" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="userPhone">10-Digit Mobile Number</label>
+        <input type="tel" id="userPhone" pattern="[0-9]{10}" placeholder="e.g., 9876543210" required>
+    </div>
+
+    <div class="form-group">
+        <label for="serviceAddress">Service Address</label>
+        <input type="text" id="serviceAddress" placeholder="Flat, building, landmark" required>
+    </div>
+
+    <button type="button" class="btn btn-primary submit-btn" id="sendOtpBtn">
+        Verify Phone & Continue
+    </button>
+</div>
+<div class="form-group">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <label for="serviceAddress">Service Address</label>
+        <button type="button" id="detectLocationBtn" class="btn-location-link">
+            📍 Use Current Location
+        </button>
+    </div>
+    <input type="text" id="serviceAddress" placeholder="Flat, building, landmark" required>
+    <small id="locationStatus" style="font-size: 11px; color: #64748b; margin-top: 2px;"></small>
+</div>
+
+                <!-- Step 2: OTP Verification Screen -->
+                <div id="bookingStep2" style="display: none;">
+                    <div class="otp-notice">
+                        <p>We sent a 4-digit code to <strong id="otpDisplayPhone"></strong></p>
+                        <small style="color: #64748b;">(Demo Test Code is: <b id="demoOtpDisplay">1234</b>)</small>
+                    </div>
+
+                    <label for="userEnteredOtp">Enter 4-Digit OTP</label>
+                    <input type="text" id="userEnteredOtp" maxlength="4" placeholder="••••" style="text-align: center; letter-spacing: 4px; font-size: 18px;">
+
+                    <div style="display: flex; gap: 8px; margin-top: 10px;">
+                        <button type="button" class="btn btn-outline" id="backToStep1" style="flex: 1;">Edit Details</button>
+                        <button type="submit" class="btn btn-primary" id="confirmBookingBtn" style="flex: 2;">Verify & Confirm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Auth Modal (Sign In / Create Account) -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <button class="close-btn" id="closeAuthModal">&times;</button>
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab-btn active" id="tabLoginBtn">Sign In</button>
+                <button type="button" class="auth-tab-btn" id="tabRegisterBtn">Create Account</button>
+            </div>
+            <p id="authSubtitle" style="text-align: center; margin-bottom: 12px; font-size: 13px; color: var(--text-muted);">
+                Welcome back! Select your role to sign in.
+            </p>
+
+            <div class="role-selector">
+                <button type="button" class="role-btn active" data-role="user">Customer</button>
+                <button type="button" class="role-btn" data-role="provider">Service Partner</button>
+            </div>
+
+            <form id="authForm">
+                <div id="regNameField" style="display: none;">
+                    <label for="authName">Full Name</label>
+                    <input type="text" id="authName" placeholder="Rajesh Kumar">
+                </div>
+                <div id="regPhoneField" style="display: none;">
+                    <label for="authPhone">Phone Number</label>
+                    <input type="tel" id="authPhone" placeholder="10-digit mobile number">
+                </div>
+                <label for="authEmail">Email Address</label>
+                <input type="email" id="authEmail" placeholder="name@example.com" required>
+
+                <label for="authPassword">Password</label>
+                <input type="password" id="authPassword" placeholder="••••••••" required>
+
+                <button type="submit" class="btn btn-primary submit-btn" id="authSubmitBtn">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hidden Dedicated Admin Access Modal (#admin or Shift+A) -->
+    <div class="modal-overlay" id="adminAuthModal">
+        <div class="modal" style="border-top: 4px solid #dc2626;">
+            <button class="close-btn" id="closeAdminModal">&times;</button>
+            <div style="text-align: center; margin-bottom: 16px;">
+                <div style="font-size: 28px; margin-bottom: 4px;">🛡️</div>
+                <h3 style="color: #991b1b; margin: 0;">Staff & Admin Gateway</h3>
+                <p style="font-size: 13px; color: var(--text-muted);">Restricted internal access</p>
+            </div>
+            <form id="adminAuthForm">
+                <label for="adminEmail">Staff ID</label>
+                <input type="text" id="adminEmail" placeholder="admin@homiqo.com" required>
+
+                <label for="adminPasskey">Security Key</label>
+                <input type="password" id="adminPasskey" placeholder="••••••••" required>
+
+                <button type="submit" class="btn btn-primary" style="background: #dc2626; width: 100%; margin-top: 12px;">
+                    Unlock Dispatch Console
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 HOMIQO Technologies. All rights reserved.</p>
+        <a href="#admin" id="secretAdminLink" style="font-size: 11px; color: #94a3b8; text-decoration: none; opacity: 0.5;">Staff Access</a>
+    </footer>
+
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
